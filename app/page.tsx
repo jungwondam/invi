@@ -1,15 +1,76 @@
+import { Code } from "@nextui-org/code";
 import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code";
 import { button as buttonStyles } from "@nextui-org/theme";
 
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
-import { Button } from "@nextui-org/button";
+import { subtitle, title } from "@/components/primitives";
+import { siteConfig } from "@/config/site";
+import { EventCard } from "@/components/eventCard";
+import { DesignCard } from "@/components/designCard";
+
+const eventCardData = [
+    {
+        id: 0,
+        title: "내 결혼식",
+        lastModified: "2025.5.5"
+    },
+    {
+        id: 1,
+        title: "내 생일 잔치",
+        lastModified: "2024.3.5"
+    },
+    {
+        id: 2,
+        title: "엄마 환갑",
+        lastModified: "2022.1.5"
+    },
+];
+
+const designCardData = [
+    {
+        id: 0,
+        name: "클래식한",
+        src: "https://nextui.org/images/hero-card.jpeg"
+    },
+    {
+        id: 1,
+        name: "조용한",
+        src: "https://nextui.org/images/hero-card.jpeg"
+    },
+    {
+        id: 2,
+        name: "따듯한",
+        src: "https://nextui.org/images/hero-card.jpeg"
+    },
+    {
+        id: 3,
+        name: "귀여운",
+        src: "https://nextui.org/images/hero-card.jpeg"
+    },
+    {
+        id: 4,
+        name: "귀여운",
+        src: "https://nextui.org/images/hero-card.jpeg"
+    }
+];
+
 
 export default function Home() {
     return (
+        <section className="flex flex-col gap-6">
+            <div className="flex flex-row gap-3">
+                <EventCard addEvent={true} />
+                {eventCardData.map(event => <EventCard {...event} />)}
+            </div>
+            <div className="flex flex-row gap-3">
+                {designCardData.map(design => <DesignCard {...design} />)}
+            </div>
+        </section >
+    );
+}
+
+/*
         <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
             <div className="inline-block max-w-lg text-center justify-center">
                 <h1 className={title()}>Make&nbsp;</h1>
@@ -53,5 +114,4 @@ export default function Home() {
                 </Snippet>
             </div>
         </section>
-    );
-}
+*/
